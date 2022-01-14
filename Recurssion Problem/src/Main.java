@@ -3,53 +3,48 @@ import java.util.Stack;
 public class Main {
     public static void main(String[] args) {
 
-        Stack<Integer> myStack = new Stack<>() ;
-        myStack.push(0) ;
-        myStack.push(1) ;
+        Stack<Integer> myStack = new Stack<>();
+        myStack.push(1);
+        myStack.push(2);
+        myStack.push(3);
+        myStack.push(4);
         myStack.push(5) ;
-        myStack.push(2) ;
 
-        System.out.println("stack of top: " + myStack.peek());
-
-        System.out.println("Stack without Sort: ");
+        int mid =  (myStack.size() / 2 ) + 1 ;
+        System.out.println("Top of Stack: " + myStack.peek());
+        System.out.println("Middle Of Stack: " + mid);
+        System.out.println("Stack Before Deleting Middle Element:");
         for(int i : myStack){
             System.out.print(i + " ");
         }
-        sortMyStack(myStack);
         System.out.println();
-        System.out.println("Stack with Sort: ");
+        solve(myStack, mid);
+        System.out.println("Stack After Deleting Middle Element:");
         for (int i : myStack){
             System.out.print(i + " ");
         }
+
+
+
     }
-    public static void sortMyStack(Stack<Integer> s){
-        if(s.size() == 1){
+    public static void solve(Stack<Integer> s, int k) {
+        if(k == 1){
+            s.pop() ;
             return;
         }
         int temp = s.peek() ;
         s.pop() ;
-        sortMyStack(s);
-        insert(s, temp);
-        return;
-    }
-    public static void insert(Stack<Integer> s, int temp) {
-        if (s.size() == 1 || s.size() <= temp) {
-            s.push(temp) ;
-            return;
-        }
-        int val = s.peek() ;
-        s.pop() ;
-        insert(s,temp);
-        s.push(val) ;
+        solve(s, k - 1);
+        s.push(temp) ;
         return;
     }
 }
 
 /*
-OUTPUT:
-stack of top: 2
-Stack without Sort:
-0 1 5 2
-Stack with Sort:
-0 1 2 5
+Top of Stack: 5
+Middle Of Stack: 3
+Stack Before Deleting Middle Element:
+1 2 3 4 5
+Stack After Deleting Middle Element:
+1 2 4 5
  */
