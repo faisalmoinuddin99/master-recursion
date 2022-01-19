@@ -5,21 +5,28 @@ import java.util.Stack;
 public class Main {
     public static void main(String[] args) {
 
-        List<Integer> myArray = new ArrayList<>() ;
-        myArray.add(3) ;
-        myArray.add(3) ;
-        myArray.add(4 );
+       int[] a = new int[4] ;
+       a[0] = 2 ;
+       a[1] = 7 ;
+       a[2] = 11 ;
+       a[3] = 15 ;
 
-        twoSum(myArray,6);
+       int[] ans = new int[3] ;
+       ans = twoSum(a,6) ;
+       for (int i : ans){
+           System.out.print(i + " ");
+       }
+
 
     }
-    public static void twoSum(List<Integer> a, int target){
-        for(int i = 0; i<a.size(); i++){
-           for(int j = i + 1; j<a.size();j++){
-               if (a.get(i) + a.get(j) == target){
-                   System.out.printf("%d %d%n", i, j);
-               }
-           }
+    public static int[] twoSum(int[] a, int target){
+        for(int i = 0 ; i < a.length - 1; i++){
+            for (int j = i + 1; j < a.length; j++){
+                if (a[i] + a[j] == target){
+                    return new int[] {i ,j} ;
+                }
+            }
         }
+        throw new IllegalArgumentException("No Solution") ;
     }
 }
