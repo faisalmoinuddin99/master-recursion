@@ -1,32 +1,36 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
 
-       int[] a = new int[4] ;
+       int[] a = new int[5] ;
        a[0] = 2 ;
-       a[1] = 7 ;
-       a[2] = 11 ;
-       a[3] = 15 ;
+       a[1] = 6 ;
+       a[2] = 5 ;
+       a[3] = 8 ;
+       a[4] = 11 ;
 
-       int[] ans = new int[3] ;
-       ans = twoSum(a,6) ;
-       for (int i : ans){
-           System.out.print(i + " ");
-       }
+      int[] data =  new int[2] ;
+      data =twoSum(a,14) ;
+      for (int i: data){
+          System.out.print(i + " ");
+      }
+
 
 
     }
     public static int[] twoSum(int[] a, int target){
-        for(int i = 0 ; i < a.length - 1; i++){
-            for (int j = i + 1; j < a.length; j++){
-                if (a[i] + a[j] == target){
-                    return new int[] {i ,j} ;
-                }
+        int[] result = new int[2] ;
+        Map<Integer, Integer> myMap = new HashMap<Integer, Integer>() ;
+
+        for(int i = 0 ; i<a.length; i++){
+            if(myMap.containsKey(target - a[i])) {
+                result[1] = i ;
+                result[0] = myMap.get(target - a[i]) ;
+                return result ;
             }
+            myMap.put(a[i] ,i ) ;
         }
-        throw new IllegalArgumentException("No Solution") ;
+        return result ;
     }
 }
