@@ -4,76 +4,47 @@ public class Main {
     public static void main(String[] args) {
 
         int[] a = new int[9];
-       a[0] = 2 ;
-       a[1] = 4;
-       a[2] = 10 ;
-       a[3] = 10 ;
-       a[4] = 10 ;
-       a[5] = 10 ;
-       a[6] = 10 ;
-       a[7] = 18 ;
-       a[8] = 20 ;
+        a[0] = 11;
+        a[1] = 12;
+        a[2] = 15;
+        a[3] = 18;
+        a[4] = 2;
+        a[5] = 5;
+        a[6] = 6;
+        a[7] = 8;
 
-       int element = 10 ;
-       int firstOccurrence = firstOccurrenceUsingBinarySearch(a, element) ;
-       int lastOccurrence = lastOccurrenceUsingBinarySearch(a, element) ;
-
-        System.out.println("First Occurrence: "+ firstOccurrence);
-        System.out.println("Last Occurrence: "+lastOccurrence);
-
-        int count = lastOccurrence - firstOccurrence + 1 ;
-
-        System.out.println("Total Count of "+ element + " is: "+count) ;
-
+        int result = findNoOfTimesArrayIsRotated(a) ;
+        System.out.println("Number of times a sorted array is rotated: "+result);
 
     }
 
-    public static int firstOccurrenceUsingBinarySearch(int[] a, int element){
-        int start = 0 ;
-        int end = a.length - 1 ;
-        int mid ;
-        int result = 0 ;
-        while (start <= end){
-            mid = start + (end - start) / 2 ;
-            if (element == a[mid]){
-                result = mid ;
-                end = mid - 1 ;
-            }else  if (element < a[mid]){
-                end = mid - 1 ;
-            }else{
-                start = mid + 1 ;
+    public static int findNoOfTimesArrayIsRotated(int[] a) {
+        int start = 0;
+        int end = a.length - 1;
+        int mid;
+        int prev, next;
+        int N = a.length;
+
+        while (start <= end) {
+            mid = start + (end - start) / 2;
+            prev = (mid + N - 1) % N;
+            next = (mid + 1) % N;
+
+            if (a[mid] <= a[next] && a[mid] <= a[prev]) {
+                return mid;
+            }
+            if (a[start] < a[mid]) {
+                start = mid + 1;
+            } else if (a[mid] < a[end]) {
+                end = end - 1;
             }
         }
-        return result ;
+        return -1;
     }
-    public static int lastOccurrenceUsingBinarySearch(int[] a, int element){
-        int start =  0;
-        int end = a.length - 1 ;
-        int mid ;
-        int result = 0;
-
-        while(start <= end){
-            mid = start + (end - start) / 2 ;
-            if (element == a[mid]){
-                result = mid ;
-                start = mid + 1 ;
-            }
-            else if (element < a[mid]){
-                end = mid - 1 ;
-            }else {
-                start = mid + 1 ;
-            }
-        }
-        return result ;
-    }
-
-
 }
 /*
 OUTPUT:
 
-First Occurrence: 2
-Last Occurrence: 6
-Total Count of 10 is: 5
+Number of times a sorted array is rotated: 4
 
  */
