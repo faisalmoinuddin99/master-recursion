@@ -10,17 +10,17 @@ public class Main {
        a[3] = 10 ;
        a[4] = 10 ;
        a[5] = 10 ;
-       a[6] = 10 ;
+       a[6] = 11 ;
        a[7] = 18 ;
        a[8] = 20 ;
 
        int element = 10 ;
-       int firstOccurance = firstOccuranceUsingBinarySearch(a, element) ;
-        System.out.println("First occurance of element-> " +  element  + " present at index: " +firstOccurance);
+       int lastOccurrence = lastOccurrenceUsingBinarySearch(a, element) ;
+        System.out.println("Last occurrence of element-> " +  element  + " present at index: " + lastOccurrence);
 
 
     }
-    public static int firstOccuranceUsingBinarySearch(int[] a, int element){
+    public static int lastOccurrenceUsingBinarySearch(int[] a, int element){
         int start =  0;
         int end = a.length - 1 ;
         int mid ;
@@ -30,7 +30,7 @@ public class Main {
             mid = start + (end - start) / 2 ;
             if (element == a[mid]){
                 result = mid ;
-                end = mid - 1 ;
+                start = mid + 1 ;
             }
             else if (element < a[mid]){
                 end = mid - 1 ;
@@ -44,6 +44,6 @@ public class Main {
 /*
 OUTPUT:
 
-First occurance of element-> 10 present at index: 2
+Last occurrence of element-> 10 present at index: 5
 
  */
