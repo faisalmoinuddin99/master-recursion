@@ -47,6 +47,12 @@ public class LinkedList {
         // Return the list by head
         return list;
     }
+    public static void insertAtBeginning(LinkedList list, int val){
+        Node nn = new Node(val) ;
+        nn.next = null ;
+        nn.next = list.head ;
+        list.head = nn ;
+    }
     public static void deleteLastElement(LinkedList list){
         if (list.head == null){
             System.out.println("Empty Linked List");
@@ -95,6 +101,18 @@ public class LinkedList {
         deleteLastElement(list);
         System.out.println();
         traverse(list); // Linked List:1 2 3 4 5 6
+
+        insertAtBeginning(list,20);
+        System.out.println();
+        traverse(list); // Linked List:20 1 2 3 4 5 6
+
+        insertAtBeginning(list,150);
+        System.out.println();
+        traverse(list); // Linked List:150 20 1 2 3 4 5 6
+
+        insert(list, 80) ;
+        System.out.println();
+        traverse(list); // Linked List:150 20 1 2 3 4 5 6 80
     }
 }
 
