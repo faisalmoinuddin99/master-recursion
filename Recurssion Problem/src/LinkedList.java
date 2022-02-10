@@ -47,6 +47,17 @@ public class LinkedList {
         // Return the list by head
         return list;
     }
+    public static void deleteLastElement(LinkedList list){
+        if (list.head == null){
+            System.out.println("Empty Linked List");
+        }
+        Node tn = list.head ;
+        while (tn.next.next != null){
+            tn = tn.next ;
+        }
+        tn.next = null ;
+
+    }
 
     // Method to print the LinkedList.
     public static void traverse(LinkedList list){
@@ -62,8 +73,7 @@ public class LinkedList {
     }
 
     // Driver code
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         /* Start with the empty list. */
         LinkedList list = new LinkedList();
 
@@ -81,10 +91,13 @@ public class LinkedList {
         insert(list, 7);
 
         // Print the LinkedList
-        traverse(list);
+        traverse(list); // Linked List:1 2 3 4 5 6 7
+        deleteLastElement(list);
+        System.out.println();
+        traverse(list); // Linked List:1 2 3 4 5 6
     }
 }
 
 /*
-Linked List:1 2 3 4 5 6 7
+
 */
