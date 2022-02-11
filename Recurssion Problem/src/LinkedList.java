@@ -53,6 +53,12 @@ public class LinkedList {
         nn.next = list.head ;
         list.head = nn ;
     }
+    public static void deleteFirstNode(LinkedList list){
+        if (list.head == null) {
+            System.out.println("Empty Linked List");
+        }
+        list.head = list.head.next ;
+    }
     public static void deleteLastElement(LinkedList list){
         if (list.head == null){
             System.out.println("Empty Linked List");
@@ -95,15 +101,18 @@ public class LinkedList {
         insert(list, 5);
         insert(list, 6);
         insert(list, 7);
-
+        System.out.println("After Insertion");
         // Print the LinkedList
         traverse(list); // Linked List:1 2 3 4 5 6 7
+
         deleteLastElement(list);
         System.out.println();
+        System.out.println("After Deleting Last Element");
         traverse(list); // Linked List:1 2 3 4 5 6
 
         insertAtBeginning(list,20);
         System.out.println();
+        System.out.println("After Inserting Element at Beginning");
         traverse(list); // Linked List:20 1 2 3 4 5 6
 
         insertAtBeginning(list,150);
@@ -113,9 +122,38 @@ public class LinkedList {
         insert(list, 80) ;
         System.out.println();
         traverse(list); // Linked List:150 20 1 2 3 4 5 6 80
+
+        deleteFirstNode(list);
+        System.out.println();
+        System.out.println("After Deleting First Node");
+        traverse(list);
+
+        deleteFirstNode(list);
+        System.out.println();
+        System.out.println("After Deleting First Node");
+        traverse(list);
+
+        deleteLastElement(list);
+        System.out.println();
+        System.out.println("After Deleting Last Node");
+        traverse(list);
+
     }
 }
 
 /*
-
+After Insertion
+Linked List:1 2 3 4 5 6 7
+After Deleting Last Element
+Linked List:1 2 3 4 5 6
+After Inserting Element at Beginning
+Linked List:20 1 2 3 4 5 6
+Linked List:150 20 1 2 3 4 5 6
+Linked List:150 20 1 2 3 4 5 6 80
+After Deleting First Node
+Linked List:20 1 2 3 4 5 6 80
+After Deleting First Node
+Linked List:1 2 3 4 5 6 80
+After Deleting Last Node
+Linked List:1 2 3 4 5 6
 */
