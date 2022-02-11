@@ -53,6 +53,19 @@ public class LinkedList {
         nn.next = list.head ;
         list.head = nn ;
     }
+    public static void insertAtIndex(LinkedList list, int val, int index){
+        Node tn = list.head ;
+        Node nn = new Node(val) ;
+        nn.next = null ;
+        int i = 0 ;
+        while(i != index - 1){
+            tn = tn.next ;
+            i++ ;
+        }
+        nn.next = tn.next ;
+        tn.next = nn ;
+
+    }
     public static void deleteFirstNode(LinkedList list){
         if (list.head == null) {
             System.out.println("Empty Linked List");
@@ -128,32 +141,15 @@ public class LinkedList {
         System.out.println("After Deleting First Node");
         traverse(list);
 
-        deleteFirstNode(list);
+        insertAtIndex(list,10,2);
         System.out.println();
-        System.out.println("After Deleting First Node");
-        traverse(list);
-
-        deleteLastElement(list);
-        System.out.println();
-        System.out.println("After Deleting Last Node");
+        System.out.println("Inserting at index");
         traverse(list);
 
     }
 }
 
 /*
-After Insertion
-Linked List:1 2 3 4 5 6 7
-After Deleting Last Element
-Linked List:1 2 3 4 5 6
-After Inserting Element at Beginning
-Linked List:20 1 2 3 4 5 6
-Linked List:150 20 1 2 3 4 5 6
-Linked List:150 20 1 2 3 4 5 6 80
-After Deleting First Node
-Linked List:20 1 2 3 4 5 6 80
-After Deleting First Node
-Linked List:1 2 3 4 5 6 80
-After Deleting Last Node
-Linked List:1 2 3 4 5 6
+Inserting at index
+Linked List:20 1 10 2 3 4 5 6 80
 */
