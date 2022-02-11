@@ -83,6 +83,19 @@ public class LinkedList {
         tn.next = null ;
 
     }
+    public static void removeElement(LinkedList list, int val){
+        while (list.head != null && list.head.data == val){
+            list.head = list.head.next ;
+        }
+        Node tn = list.head ;
+        while (tn != null && tn.next != null){
+            if (tn.next.data == val){
+                tn.next = tn.next.next ;
+            } else {
+                tn = tn.next ;
+            }
+        }
+    }
 
     // Method to print the LinkedList.
     public static void traverse(LinkedList list){
@@ -111,45 +124,23 @@ public class LinkedList {
         insert(list, 2);
         insert(list, 3);
         insert(list, 4);
-        insert(list, 5);
+        insert(list, 1);
         insert(list, 6);
         insert(list, 7);
         System.out.println("After Insertion");
         // Print the LinkedList
         traverse(list); // Linked List:1 2 3 4 5 6 7
 
-        deleteLastElement(list);
-        System.out.println();
-        System.out.println("After Deleting Last Element");
-        traverse(list); // Linked List:1 2 3 4 5 6
-
-        insertAtBeginning(list,20);
-        System.out.println();
-        System.out.println("After Inserting Element at Beginning");
-        traverse(list); // Linked List:20 1 2 3 4 5 6
-
-        insertAtBeginning(list,150);
-        System.out.println();
-        traverse(list); // Linked List:150 20 1 2 3 4 5 6
-
-        insert(list, 80) ;
-        System.out.println();
-        traverse(list); // Linked List:150 20 1 2 3 4 5 6 80
-
-        deleteFirstNode(list);
-        System.out.println();
-        System.out.println("After Deleting First Node");
+        removeElement(list, 1);
         traverse(list);
 
-        insertAtIndex(list,10,2);
-        System.out.println();
-        System.out.println("Inserting at index");
-        traverse(list);
+
 
     }
 }
 
 /*
-Inserting at index
-Linked List:20 1 10 2 3 4 5 6 80
+After Insertion
+Linked List:1 2 3 4 1 6 7
+Linked List:2 3 4 6 7
 */
