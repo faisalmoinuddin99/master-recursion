@@ -96,6 +96,16 @@ public class LinkedList {
             }
         }
     }
+    public static int middleOfLinkedList(LinkedList list){
+        Node slow = list.head ;
+        Node fast = list.head ;
+
+        while (fast != null && fast.next != null){
+            slow = slow.next ;
+            fast = fast.next.next ;
+        }
+        return slow.data ;
+    }
 
     // Method to print the LinkedList.
     public static void traverse(LinkedList list){
@@ -131,9 +141,10 @@ public class LinkedList {
         // Print the LinkedList
         traverse(list); // Linked List:1 2 3 4 5 6 7
 
-        removeElement(list, 1);
+        removeElement(list, 1); // Linked List:2 3 4 6 7
         traverse(list);
-
+        int middle = middleOfLinkedList(list) ;
+        System.out.println("Middle Element: "+middle); // Middle Element: 4
 
 
     }
