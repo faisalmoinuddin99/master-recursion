@@ -106,6 +106,16 @@ public class LinkedList {
         }
         return slow.data ;
     }
+    public static int convertBinaryToDecimal(LinkedList list){
+        Node tn = list.head ;
+        int ans = 0 ;
+        while (tn != null){
+            ans = ans * 2 ;
+            ans = ans + tn.data ;
+            tn = tn.next ;
+        }
+        return ans ;
+    }
 
     // Method to print the LinkedList.
     public static void traverse(LinkedList list){
@@ -113,7 +123,7 @@ public class LinkedList {
             System.out.println("Linked List is Empty");
         }
         Node tn = list.head ;
-        System.out.print("Linked List:");
+        System.out.print("Linked List: ");
         while (tn != null){
             System.out.print(tn.data + " ");
             tn = tn.next ;
@@ -131,27 +141,21 @@ public class LinkedList {
 
         // Insert the values
         insert(list, 1);
-        insert(list, 2);
-        insert(list, 3);
-        insert(list, 4);
-        insert(list, 1);
-        insert(list, 6);
-        insert(list, 7);
+        insert(list, 1) ;
+        insert(list, 0 ) ;
         System.out.println("After Insertion");
         // Print the LinkedList
         traverse(list); // Linked List:1 2 3 4 5 6 7
 
-        removeElement(list, 1); // Linked List:2 3 4 6 7
-        traverse(list);
-        int middle = middleOfLinkedList(list) ;
-        System.out.println("Middle Element: "+middle); // Middle Element: 4
+
+        int binaryResult = convertBinaryToDecimal(list) ;
+        System.out.println("Binary Result: " + binaryResult);
 
 
     }
 }
 
 /*
-After Insertion
-Linked List:1 2 3 4 1 6 7
-Linked List:2 3 4 6 7
+Linked List: 1 1 0
+Binary Result: 6
 */
